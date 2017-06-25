@@ -3,7 +3,13 @@ package cn.com.codemonkey.research.regex.domain.automaton;
 import java.util.UUID;
 
 /**
+ * <p>
  * Deterministic Finite Automaton with UUID states
+ * </p>
+ * <p>
+ * UUID states are used to avoid potential naming conflicts when merging several
+ * DFAs
+ * </p>
  *
  * @param <A>
  *            The generic type of input characters

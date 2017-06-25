@@ -30,23 +30,6 @@ public class NFA<S, A> {
 		states.add(startState);
 	}
 
-	public NFA(NFA<S, A> nfa1, NFA<S, A> nfa2, A input) {
-		if (nfa1 == null || nfa2 == null) {
-			throw new IllegalArgumentException("NFA cannot be null.");
-		}
-
-		if (nfa1.endStates.size() != 1) {
-			throw new IllegalArgumentException("First NFA should have exactly one end state.");
-		}
-
-		this.startState = nfa1.startState;
-		this.endStates = nfa2.endStates;
-		states.addAll(nfa1.states);
-		states.addAll(nfa2.states);
-		transitions.addAll(transitions);
-		transitions.add(new Transition(nfa1.endStates.iterator().next(), input, nfa2.startState));
-	}
-
 	/**
 	 * Set end state to NFA
 	 * 
