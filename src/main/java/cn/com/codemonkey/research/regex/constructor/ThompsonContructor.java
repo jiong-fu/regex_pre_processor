@@ -16,7 +16,7 @@ class ThompsonContructor extends Constructor {
 	}
 
 	@Override
-	public DFA<String, Character> contruct() {
+	public DFA<Integer, Character> contruct() {
 		// TODO:
 		// Thompson Construction (Regex -> Epsilon NFA)
 		// Eliminate Epsilon States (Epsilon NFA -> DFA)

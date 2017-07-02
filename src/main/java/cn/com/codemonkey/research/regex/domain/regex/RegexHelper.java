@@ -10,6 +10,7 @@ public final class RegexHelper {
 	public static final char EPSILON = '\u03B5';
 	public static final char LEFT_BRACKET = '[';
 	public static final char RIGHT_BRACKET = ']';
+	public static final char RIGHT_ARROW = '\u2192';
 	public static final char[] SPECIAL_CHARS = { LEFT_BRACKET, RIGHT_BRACKET, '|', '+', '*' };
 
 	private RegexHelper() {

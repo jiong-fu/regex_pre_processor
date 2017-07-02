@@ -1,6 +1,6 @@
 package cn.com.codemonkey.research.regex.constructor;
 
-import cn.com.codemonkey.research.regex.domain.automaton.DFA;
+import cn.com.codemonkey.research.regex.domain.automaton.NFA;
 import cn.com.codemonkey.research.regex.domain.regex.InductiveRegex;
 import cn.com.codemonkey.research.regex.domain.regex.Regex;
 import cn.com.codemonkey.research.regex.domain.regex.SimpleRegex;
@@ -41,10 +41,11 @@ public abstract class Constructor {
 	}
 
 	/**
-	 * Construct Deterministic Finite Automaton with given regular expression
+	 * Construct Non-deterministic Finite Automaton with given regular
+	 * expression
 	 * 
 	 * @return
 	 */
-	public abstract DFA<String, Character> contruct();
+	public abstract NFA<Integer, Character> contruct();
 
 }

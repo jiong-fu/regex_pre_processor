@@ -1,41 +1,33 @@
 package cn.com.codemonkey.research.regex.domain.automaton;
 
-import java.util.UUID;
-
 /**
- * <p>
- * Deterministic Finite Automaton with UUID states
- * </p>
- * <p>
- * UUID states are used to avoid potential naming conflicts when merging several
- * DFAs
- * </p>
- *
+ * Non-deterministic Finite Automaton with integer states
+ * 
  * @param <A>
  *            The generic type of input characters
  */
-public class UuidStateDFA<A> extends DFA<String, A> {
+public class IntStateNFA<A> extends NFA<Integer, A> {
 
-	private String currentState = null;
+	private int currentState = 0;
 
-	public UuidStateDFA() {
-		super(UUID.randomUUID().toString());
+	public IntStateNFA() {
+		super(0);
 		currentState = startState;
 	}
 
-	public String getCurrentState() {
+	public Integer getCurrentState() {
 		return currentState;
 	}
 
 	public void addState() {
-		String nextState = UUID.randomUUID().toString();
+		int nextState = currentState + 1;
 		super.addState(nextState);
 		currentState = nextState;
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder stringBuilder = new StringBuilder("IntStateDFA\n");
+		StringBuilder stringBuilder = new StringBuilder("IntStateNFA\n");
 
 		for (Transition transition : transitions) {
 			stringBuilder.append(transition).append('\n');
@@ -44,7 +36,7 @@ public class UuidStateDFA<A> extends DFA<String, A> {
 		stringBuilder.append("q0 = ").append(startState).append('\n');
 
 		stringBuilder.append("F = [");
-		for (String endState : endStates) {
+		for (int endState : endStates) {
 			stringBuilder.append(endState).append(", ");
 		}
 		stringBuilder.delete(stringBuilder.lastIndexOf(", "), stringBuilder.length()).append("]\n");

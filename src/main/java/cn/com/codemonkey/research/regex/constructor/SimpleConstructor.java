@@ -1,7 +1,7 @@
 package cn.com.codemonkey.research.regex.constructor;
 
-import cn.com.codemonkey.research.regex.domain.automaton.DFA;
-import cn.com.codemonkey.research.regex.domain.automaton.UuidStateDFA;
+import cn.com.codemonkey.research.regex.domain.automaton.IntStateNFA;
+import cn.com.codemonkey.research.regex.domain.automaton.NFA;
 import cn.com.codemonkey.research.regex.domain.regex.SimpleRegex;
 
 /**
@@ -16,18 +16,19 @@ class SimpleConstructor extends Constructor {
 	}
 
 	@Override
-	public DFA<String, Character> contruct() {
-		UuidStateDFA<Character> uuidStateDFA = new UuidStateDFA<>();
+	public NFA<Integer, Character> contruct() {
+		IntStateNFA<Character> nfa = new IntStateNFA<>();
 
+		nfa.setSymbolicName(regex.getValue().toString());
 		for (char c : regex.getValue().toString().toCharArray()) {
-			String currentState = uuidStateDFA.getCurrentState();
-			uuidStateDFA.addState();
-			String nextState = uuidStateDFA.getCurrentState();
-			uuidStateDFA.addTransition(currentState, c, nextState);
+			int currentState = nfa.getCurrentState();
+			nfa.addState();
+			int nextState = nfa.getCurrentState();
+			nfa.addTransition(currentState, c, nextState);
 		}
-		uuidStateDFA.setEndState(uuidStateDFA.getCurrentState());
+		nfa.setEndState(nfa.getCurrentState());
 
-		return uuidStateDFA;
+		return nfa;
 	}
 
 }
